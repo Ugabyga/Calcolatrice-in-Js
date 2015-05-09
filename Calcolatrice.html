@@ -1,0 +1,270 @@
+<html>
+    <head><title>Calcolatrice</title></head>
+        <script type=text/javascript>
+
+            var blocco = 1;
+	    var operazione = "";
+				
+
+	    function onoff(x)
+	    {	
+	        if(x == "off")
+		{ 
+		calcolatrice.barra.value = "";
+		calcolatrice.barra2.value = "";
+		calcolatrice.barra.style.backgroundColor = 'black';
+		calcolatrice.barra2.style.backgroundColor = 'black';
+		return blocco = 0;
+	        }
+	        else
+		{	
+		    calcolatrice.barra.value = "";
+		    calcolatrice.barra2.value = "";
+		    calcolatrice.barra.style.backgroundColor = '#B2B2B2';
+		    calcolatrice.barra2.style.backgroundColor = '#B2B2B2';
+		    return blocco = 1;
+                 }
+            }
+
+										 
+	    function canc()
+	    {	
+		calcolatrice.barra.value = "";
+		calcolatrice.barra2.value = "";
+	    }
+	
+							
+	    function svuota()
+	    {
+	        calcolatrice.barra2.value = "";
+                calcolatrice.barra.value = "";
+	    }
+
+
+	    function aggiungi(valore) 
+	    {
+	        if(blocco == 0)
+		{ 
+		    calcolatrice.barra.style.backgroundColor = 'black';
+		    calcolatrice.barra2.style.backgroundColor = 'black';
+		    calcolatrice.barra.value = "";
+		    calcolatrice.barra2.value = "";
+		}
+		else
+		{
+		    if(calcolatrice.barra.value == "" && blocco == 1) 
+		    {
+	                calcolatrice.barra.style.backgroundColor = '#B2B2B2';
+			calcolatrice.barra2.style.backgroundColor = '#B2B2B2';
+			calcolatrice.barra.value = valore;
+		    } 
+		    else 
+		    {                                               
+		        calcolatrice.barra.value = calcolatrice.barra.value + valore;
+		    }
+		}
+	    }
+
+
+	    function punto(valore)
+	    { 
+                if(blocco == 1)	    
+		    calcolatrice.barra.value = calcolatrice.barra.value + valore;
+	    }
+	
+			
+	    function pot()
+	    { 
+	        if(blocco == 1)
+		    calcolatrice.barra2.value = (calcolatrice.barra.value) +("*") + (calcolatrice.barra.value) +("=");
+		    calcolatrice.barra.value = (calcolatrice.barra.value) * (calcolatrice.barra.value);
+	    }
+								
+				
+	    function rad_quad()
+	    { 
+	        if(blocco == 1)
+		    calcolatrice.barra.value = Math.sqrt(calcolatrice.barra.value);
+	    }
+					
+				
+	    function logaritmo()
+	    { 
+	        if(blocco == 1)
+		    calcolatrice.barra.value = Math.log(calcolatrice.barra.value); 
+	    }
+							
+				
+	    function tangente()
+	    { 
+	        if(blocco == 1)		
+		    calcolatrice.barra.value = Math.tan(calcolatrice.barra.value); 
+	    }
+						
+			
+	    function arctangente()
+	    {	
+		if(blocco == 1)	
+		    calcolatrice.barra.value = Math.atan(calcolatrice.barra.value); 
+	    }
+		
+						
+	    function arco_seno()
+	    { 
+		if(blocco == 1)		
+		    calcolatrice.barra.value = Math.asin(calcolatrice.barra.value); 
+	    }
+	
+						
+	    function exp()
+	    { 
+		if(blocco == 1)
+		    temp = parseFloat(calcolatrice.barra.value);
+		    calcolatrice.barra.value = "";
+		    return operazione = "pow";
+	    }
+	
+			
+	    function somma() 
+	    {
+		 if(blocco == 1)
+		     temp = parseFloat(calcolatrice.barra.value);
+		     calcolatrice.barra.value = "";
+		     calcolatrice.barra2.value = temp +"+" + calcolatrice.barra.value;
+		     return operazione = "Somma";                  
+	    }
+               
+                
+	    function sottrazione() 
+	    { 
+	        if(blocco == 1)
+		    temp = parseFloat(calcolatrice.barra.value);
+		    calcolatrice.barra.value = "";
+		    calcolatrice.barra2.value = temp +"-" + calcolatrice.barra.value;
+		    return operazione = "Sottrazione";    
+	    }
+               
+                
+	    function moltiplicazione() 
+	    { 
+	        if(blocco == 1)
+		    temp = calcolatrice.barra.value;
+		    calcolatrice.barra.value = " ";
+		    calcolatrice.barra2.value = temp +"*" + calcolatrice.barra.value;
+		    return operazione = "Moltiplicazione";
+	    }
+               
+               
+	    function divisione() 
+	    { 
+		if(blocco == 1)
+		    temp = calcolatrice.barra.value;
+		    calcolatrice.barra.value = " ";
+		    calcolatrice.barra2.value=temp +"/" + calcolatrice.barra.value;
+		    return operazione = "Divisione";     
+	    }
+               
+                
+	    function risultato()
+	    { 
+	        if(blocco == 1)
+		    if(operazione == "Somma") 
+		    {
+		        calcolatrice.barra2.value = parseFloat(temp) +("+") + parseFloat(calcolatrice.barra.value) +("=");
+			parseFloat(calcolatrice.barra2.value);
+			calcolatrice.barra.value = parseFloat(calcolatrice.barra.value) + parseFloat(temp);
+			parseFloat(calcolatrice.barra.value);
+			operazione = "";
+		    }
+		    else if(operazione == "Sottrazione") 
+		         {
+			     calcolatrice.barra2.value = parseFloat(temp) +("-") + parseFloat(calcolatrice.barra.value) +("=");
+			     parseFloat(calcolatrice.barra2.value);
+			     calcolatrice.barra.value = parseFloat(temp) - parseFloat(calcolatrice.barra.value);
+			     parseFloat(calcolatrice.barra.value);
+			     operazione = "";
+			 } 
+			 else if(operazione == "Moltiplicazione") 
+			      {
+			          calcolatrice.barra2.value = parseFloat(temp) +("*") + parseFloat(calcolatrice.barra.value) +("=");
+				  parseFloat(calcolatrice.barra2.value);
+				  calcolatrice.barra.value = parseFloat(temp) * parseFloat(calcolatrice.barra.value);
+				  parseFloat(calcolatrice.barra.value);
+				  operazione = "";
+			      }
+			      else if(operazione == "Divisione") 
+				   {
+				       calcolatrice.barra2.value = parseFloat(temp) +("/") + parseFloat(calcolatrice.barra.value) +("=");
+			               parseFloat(calcolatrice.barra2.value);
+				       calcolatrice.barra.value = parseFloat(temp) / parseFloat(calcolatrice.barra.value);
+				       parseFloat(calcolatrice.barra.value);
+				       operazione = "";
+				   } 
+				   else if(operazione == "pow")
+				        {
+					    calcolatrice.barra2.value = temp +("^") + calcolatrice.barra.value +("=");
+                                            calcolatrice.barra.value = Math.pow          (temp,calcolatrice.barra.value);										
+                                        }
+             }
+        
+
+</script>
+    <body style = "background:#F0E68C;">
+        <form " name = 'calcolatrice' align = 'center' >
+            <H1 align = "center" style = "background: ORANGE; font-size: 50pt; font = ”hackers”; color: RED ">CALCOLATRICE</H1> 
+            <br> 
+            <br> 
+            <br> 
+            <br>   						
+            <table border = 0 align = "center" bgcolor = "black">
+                <tr>
+                    <td>
+                        <input style = "color: RGB(0,0,0); background: #B2B2B2; font-size: 20pt" type = 'text' name = 'barra2' size = 16 value = "">
+                    </td>
+                </tr>
+ 
+                <tr>
+                    <td>
+                        <input style="color:RGB(0,0,0); background:#B2B2B2; font-size:20pt" type='text' name ='barra' size = 16 value = "">
+                    </td>
+                </tr> 
+
+                <tr>
+                    <td>
+                        <input style=" height: 50; width: 80; color:RGB(255,255,255); font-size:20pt; background-color:red" type='button' value=' on ' onclick='onoff(this.value);' ><input style="height: 50; width: 80; color:RGB(255,255,255); font-size:20pt; background-color:red" type='button' value='off' onclick='onoff(this.value);'>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input style=" height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='7' onclick='aggiungi(this.value);'><input style=" height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='8' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='9' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='+' onclick='somma();'><input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:orange" type='button' value=' = ' onclick='risultato();'>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input style="height: 50; width: 50;  color:RGB(black); font-size:20pt; background-color:white" type='button' value='4' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='5' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='6' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='-' onclick='sottrazione();'><input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='sqrt' onclick='rad_quad();'>              
+                    </td>
+                </tr> 
+				
+                <tr>
+                    <td>
+                        <input style=" height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='1' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='2' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='3' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='*' onclick='moltiplicazione();'><input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='log' onclick='logaritmo();'>                
+                    </td>                  
+                </tr>
+
+                <tr>
+                    <td>
+                        <input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='C' onclick='canc();'><input style="height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='0' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='.' onclick='punto(this.value);'><input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='/' onclick='divisione();'><input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='x2' onclick='pot();'>
+                    </td>
+                </tr> 
+
+                    <td>
+                        <input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='tan' onclick='tangente();'>
+                        <input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='asin' onclick='arco_seno();'>
+                        <input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='arctg' onclick='arctangente();'>
+                        <input style="height: 50; width: 60; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='pow' onclick='exp();'>
+            </table>
+        </form>
+    </body>
+</html>
