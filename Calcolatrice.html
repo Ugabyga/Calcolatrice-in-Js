@@ -2,22 +2,24 @@
     <head><title>Calcolatrice</title></head>
         <script type=text/javascript>
 
-            var blocco = 1;
+            var blocco = 1;			//la variabile blocco è di tipo bool ed è usata per sbloccare o bloccare la calcolatrice
 	    var operazione = "";
 				
-
-	    function onoff(x)
+	    function onoff(x)			//la variabile x ritorna alla funione che segue se l'utente ha premuto il tasto on o il tasto off
 	    {	
 	        if(x == "off")
 		{ 
-		calcolatrice.barra.value = "";
+		
+		//il blocco della calcolatrice è attivo e quindi sui due display non verrà visualizzato alcun numero e diventeranno neri
+		calcolatrice.barra.value = "";				
 		calcolatrice.barra2.value = "";
 		calcolatrice.barra.style.backgroundColor = 'black';
 		calcolatrice.barra2.style.backgroundColor = 'black';
 		return blocco = 0;
 	        }
 	        else
-		{	
+		{
+		//il blocco non è attivo dunque la calcolatrice funziona correttamente	
 		    calcolatrice.barra.value = "";
 		    calcolatrice.barra2.value = "";
 		    calcolatrice.barra.style.backgroundColor = '#B2B2B2';
@@ -26,7 +28,7 @@
                  }
             }
 
-										 
+	    //resetta i due display								 
 	    function canc()
 	    {	
 		calcolatrice.barra.value = "";
@@ -56,66 +58,74 @@
 		    {
 	                calcolatrice.barra.style.backgroundColor = '#B2B2B2';
 			calcolatrice.barra2.style.backgroundColor = '#B2B2B2';
-			calcolatrice.barra.value = valore;
+			calcolatrice.barra.value = valore;   //sul primo display viene stampato il numero inserito dalla tastiera della calcolatrice
 		    } 
 		    else 
 		    {                                               
-		        calcolatrice.barra.value = calcolatrice.barra.value + valore;
+		        calcolatrice.barra.value = calcolatrice.barra.value + valore; //concatena il primo numero inserito con il secondo
 		    }
 		}
 	    }
 
 
+	    //funzione utile per i numeri decimali
 	    function punto(valore)
 	    { 
                 if(blocco == 1)	    
 		    calcolatrice.barra.value = calcolatrice.barra.value + valore;
 	    }
 	
-			
+
+	    //calcolo quadrato di un numero	
 	    function pot()
 	    { 
 	        if(blocco == 1)
 		    calcolatrice.barra2.value = (calcolatrice.barra.value) +("*") + (calcolatrice.barra.value) +("=");
 		    calcolatrice.barra.value = (calcolatrice.barra.value) * (calcolatrice.barra.value);
 	    }
-								
-				
+		
+						
+	    //calcolo radrice quadrata di un numero		
 	    function rad_quad()
 	    { 
 	        if(blocco == 1)
 		    calcolatrice.barra.value = Math.sqrt(calcolatrice.barra.value);
 	    }
-					
-				
+		
+			
+	    //calcolo logaritmo di un numero		
 	    function logaritmo()
 	    { 
 	        if(blocco == 1)
 		    calcolatrice.barra.value = Math.log(calcolatrice.barra.value); 
 	    }
-							
-				
+		
+					
+	    //calcolo tangente di un numero		
 	    function tangente()
 	    { 
 	        if(blocco == 1)		
 		    calcolatrice.barra.value = Math.tan(calcolatrice.barra.value); 
 	    }
-						
-			
+		
+				
+	    //calcolo arcotangente di un numero	
 	    function arctangente()
 	    {	
 		if(blocco == 1)	
 		    calcolatrice.barra.value = Math.atan(calcolatrice.barra.value); 
 	    }
 		
-						
+		
+				
 	    function arco_seno()
 	    { 
 		if(blocco == 1)		
 		    calcolatrice.barra.value = Math.asin(calcolatrice.barra.value); 
 	    }
 	
-						
+
+	    //calcolo potenza di un numero				
 	    function exp()
 	    { 
 		if(blocco == 1)
@@ -150,7 +160,7 @@
 	        if(blocco == 1)
 		    temp = calcolatrice.barra.value;
 		    calcolatrice.barra.value = " ";
-		    calcolatrice.barra2.value = temp +"*" + calcolatrice.barra.value;
+		    calcolatrice.barra2.value = temp +"*" + calcolatrice.barra.value;   
 		    return operazione = "Moltiplicazione";
 	    }
                
@@ -164,13 +174,13 @@
 		    return operazione = "Divisione";     
 	    }
                
-                
+           //Questa funzione controlla l'operazione che l'utente ha deciso di effettuare, concatena i numeri inseiriti con il simbolo dell'operazione opportuna e 		   converte in numeri float tutto ciò che ritroviamo sui due display    
 	    function risultato()
 	    { 
 	        if(blocco == 1)
 		    if(operazione == "Somma") 
 		    {
-		        calcolatrice.barra2.value = parseFloat(temp) +("+") + parseFloat(calcolatrice.barra.value) +("=");
+		        calcolatrice.barra2.value = parseFloat(temp) +("+") + parseFloat(calcolatrice.barra.value) +("=");  //concatenazione
 			parseFloat(calcolatrice.barra2.value);
 			calcolatrice.barra.value = parseFloat(calcolatrice.barra.value) + parseFloat(temp);
 			parseFloat(calcolatrice.barra.value);
@@ -255,7 +265,11 @@
 
                 <tr>
                     <td>
-                        <input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='C' onclick='canc();'><input style="height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='0' onclick='aggiungi(this.value);'><input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='.' onclick='punto(this.value);'><input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='/' onclick='divisione();'><input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='x2' onclick='pot();'>
+                        <input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='C' onclick='canc();'>
+			<input style="height: 50; width: 50; color:RGB(black); font-size:20pt; background-color:white" type='button' value='0' onclick='aggiungi(this.value);'>
+			<input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='.' onclick='punto(this.value);'>
+			<input style="height: 50; width: 50; color:RGB(255,255,255); font-size:20pt; background-color:gray" type='button' value='/' onclick='divisione();'>
+			<input style="height: 50; width: 70; color:RGB(255,255,255); font-size:20pt; background-color:blue" type='button' value='x2' onclick='pot();'>
                     </td>
                 </tr> 
 
